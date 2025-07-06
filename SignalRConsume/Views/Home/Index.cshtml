@@ -1,0 +1,48 @@
+﻿@section Scripts
+{
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+
+            var connection = new signalR.HubConnectionBuilder()
+                .withUrl("http://localhost:5157/VisitorHub")
+                .configureLogging(signalR.LogLevel.Information) // Bağlantı hatalarını görmek için
+                .withAutomaticReconnect() // Otomatik tekrar bağlanmayı etkinleştir
+                .build();
+
+            // İlk başta bağlantı durumu güncelle
+            document.getElementById("connectionStatus").innerText = connection.state;
+
+            // Bağlantıyı başlat ve bağlantı durumu değiştiğinde güncelle
+            connection.start().then(() => {
+                document.getElementById("connectionStatus").innerText = connection.state;
+            }).catch((err) => {
+                console.error("SignalR bağlantısı başarısız:", err);
+            });
+
+            // Bağlantı durumunu dinle
+            connection.onclose(() => {
+                document.getElementById("connectionStatus").innerText = "Disconnected";
+            });
+
+            connection.onreconnecting(() => {
+                document.getElementById("connectionStatus").innerText = "Reconnecting...";
+            });
+
+            connection.onreconnected(() => {
+                document.getElementById("connectionStatus").innerText = "Connected";
+            });
+
+        });
+    </script>
+}
+
+<div class="container">
+    <br />
+    <div class="alert alert-warning">
+        Bağlantınızın Durumu: <b id="connectionStatus"></b>
+    </div>
+</div>
+

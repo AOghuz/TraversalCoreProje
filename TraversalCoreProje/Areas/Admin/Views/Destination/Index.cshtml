@@ -1,0 +1,44 @@
+﻿@using EntityLayer.Concrete
+@model List<Destination>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Tur Rotoları</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Şehir</th>
+        <th>Fiyat</th>
+        <th>Kapasite</th>
+        <th>Sitede gör</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Durum</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.DestinationId</td>
+            <th>@item.City</th>
+            <th>@item.Price</th>
+            <th>@item.Capacity</th>
+            <th><a href="/Destination/Details/@item.DestinationId" class="btn btn-outline-info">Sitede Gör</a></th>
+            <th><a href="/Admin/Destination/DeleteDestination/@item.DestinationId" class="btn btn-outline-danger">Sil</a></th>
+            <th><a href="/Admin/Destination/UpdateDestination/@item.DestinationId" class="btn btn-outline-info">Güncelle</a></th>
+           @*  @if (item.Status == true)
+            {
+                <td><a href="/Admin/Destination/ChangeToFalse/@item.DestinationId" class="btn btn-success">Pasif Yap</a></td>
+            }
+            else
+            {
+                <td><a href="/Admin/Destination/ChangeToTrue/@item.DestinationId" class="btn btn-success">Aktif Yap</a></td>
+
+        *@
+
+        </tr>
+    }
+</table>
+<a href="/Admin/Destination/AddDestination" class="btn btn-outline-primary">Yeni Tur Rotası</a>

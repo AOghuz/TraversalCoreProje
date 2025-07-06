@@ -1,0 +1,113 @@
+﻿@{
+    ViewData["Title"] = "Index3";
+}
+
+<h1>Index2</h1>
+
+@section Scripts
+{
+
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+
+            var visitChartList = [["Tarih", "Kayseri", "İstanbul", "Ankara", "Antalya", "Bursa"]];
+
+            var connection = new signalR.HubConnectionBuilder()
+                .withUrl("http://localhost:5159/VisitorHub")
+                .withAutomaticReconnect() // Otomatik yeniden bağlanma
+                .configureLogging(signalR.LogLevel.Information) // Hata loglarını görmek için
+                .build();
+
+            // Bağlantı durumunu güncelleyen fonksiyon
+            function updateConnectionStatus() {
+                document.getElementById("connectionStatus").innerText = connection.state;
+            }
+
+            // İlk başta bağlantı durumunu göster
+            updateConnectionStatus();
+
+            // SignalR bağlantısını başlat
+            connection.start().then(() => {
+                connection.invoke("GetVisitorList");
+                updateConnectionStatus();
+            }).catch((err) => {
+                console.error("Bağlantı hatası:", err);
+            });
+
+            // Bağlantı olaylarını dinleyerek bağlantı durumunu güncelle
+            connection.onreconnecting(() => {
+                document.getElementById("connectionStatus").innerText = "Reconnecting...";
+            });
+
+            connection.onreconnected(() => {
+                updateConnectionStatus();
+            });
+
+            connection.onclose(() => {
+                document.getElementById("connectionStatus").innerText = "Disconnected";
+            });
+
+            // SignalR'dan gelen veriyi işle
+            connection.on("ReceiveVisitorList", (visitList) => {
+                console.log("Gelen veri:", visitList); // Hata ayıklamak için
+                console.log("Veri türü:", typeof visitList);
+                console.log("Array mi?", Array.isArray(visitList));
+
+                // Eğer gelen veri bir array değilse, JSON parse yaparak dönüştür
+                if (!Array.isArray(visitList)) {
+                    try {
+                        visitList = JSON.parse(visitList);
+                        console.log("Dönüştürülmüş veri:", visitList);
+                    } catch (error) {
+                        console.error("JSON parse hatası:", error);
+                    }
+                }
+
+                // Eğer hala array değilse, hatayı ekrana yaz
+                if (!Array.isArray(visitList)) {
+                    console.error("Hata: Gelen veri dizi formatında değil!", visitList);
+                    return;
+                }
+
+                visitChartList = visitChartList.slice(0, 1);
+
+                visitList.forEach((item) => {
+                    visitChartList.push([item.visitDate, item.counts[0], item.counts[1], item.counts[2], item.counts[3], item.counts[4]]);
+                });
+
+                google.charts.load('current', { 'packages': ['corechart'] });
+                google.charts.setOnLoadCallback(drawChart);
+            });
+
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable(visitChartList);
+
+                var options = {
+                    title: 'Traversal Ziyaretçi Listesi Grafiği',
+                    curveType: 'none',
+                    legend: { position: 'bottom' }
+                };
+
+                var chart = new google.visualization.ColumnChart(document.getElementById('curve_chart'));
+
+                chart.draw(data, options);
+            }
+
+        });
+    </script>
+
+}
+
+<div class="container">
+    <br />
+    <div class="alert alert-warning">
+        Bağlantınızın Durumu: <b id="connectionStatus"></b>
+    </div>
+</div>
+<br />
+
+<div id="curve_chart" style="width: 1200px; height: 800px"></div>

@@ -1,0 +1,32 @@
+﻿@using EntityLayer.Concrete
+@model List<Comment>
+
+@{
+    ViewData["Title"] = "Kullanıcı Yorumları";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int sayac = 0;
+}
+
+<h1>Kullanıcının Yorumları</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Rota</th>
+        <th>Yorum</th>
+        <th>Tarih</th>
+        <th>Durum</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        sayac++;
+        <tr>
+            <td>@sayac</td>
+            <td>@item.Destination.City</td>
+            <td>@item.CommentContent</td>
+            <td>@(((DateTime)item.CommentDate).ToString("dd-MMMM-yyyy"))</td>
+            <td>@(item.CommentState.GetValueOrDefault() ? "Aktif" : "Pasif")</td>
+
+        </tr>
+    }
+</table>
