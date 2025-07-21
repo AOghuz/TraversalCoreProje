@@ -100,9 +100,16 @@ Asp.Net Core MVC 8.0 kullanılarak geliştirilen bu uygulamada, Entity Framework
 ![Referanslar](https://github.com/AOghuz/TraversalCoreProje/blob/master/TraversalCoreProje/wwwroot/Traversalgithubimages/site/testimonial.png)
 ### Tur Detayları
 ![Tur Detayları](https://github.com/AOghuz/TraversalCoreProje/blob/master/TraversalCoreProje/wwwroot/Traversalgithubimages/site/turdetails.png)
+### Yorum Yapma
 ![Tur Detayları](https://github.com/AOghuz/TraversalCoreProje/blob/master/TraversalCoreProje/wwwroot/Traversalgithubimages/site/turdetails2.png)
-
-
+### İletişim Sayfası
+![Tur Detayları](https://github.com/AOghuz/TraversalCoreProje/blob/master/TraversalCoreProje/wwwroot/Traversalgithubimages/uye/comment.png)
+### Kayıt Ol Ekranı
+![Kayitolekrani](https://github.com/AOghuz/TraversalCoreProje/blob/master/TraversalCoreProje/wwwroot/Traversalgithubimages/login/kayitol.png)
+### Giriş Ekranı
+![](https://github.com/AOghuz/TraversalCoreProje/blob/master/TraversalCoreProje/wwwroot/Traversalgithubimages/login/giris.png)
+### Üye Paneli Profili
+![](https://github.com/AOghuz/TraversalCoreProje/blob/master/TraversalCoreProje/wwwroot/Traversalgithubimages/uye/destination.png)
 
 
 
