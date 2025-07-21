@@ -89,5 +89,15 @@ Asp.Net Core MVC 5.0 kullanılarak geliştirilen bu uygulamada, Entity Framework
 
 ---
 
-## Sitenin Görselleri
+## Sitenin Görselleri### Ana Sayfa
+![Ana Sayfa](wwwroot/Traversalgithubimages/site/default1.png)
+![Rotalar](wwwroot/Traversalgithubimages/site/defaultdestination.png)
+![](wwwroot/Traversalgithubimages/site/dest2.png)
+![Ana Sayfa](wwwroot/Traversalgithubimages/site/turdetails.png)
+![Tur Detayları](wwwroot/Traversalgithubimages/site/turdetails2.png)
+![Referanslar](wwwroot/Traversalgithubimages/site/testimonial.png)
+
+
+
+
 
