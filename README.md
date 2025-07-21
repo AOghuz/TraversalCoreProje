@@ -93,11 +93,11 @@ Asp.Net Core MVC 5.0 kullanılarak geliştirilen bu uygulamada, Entity Framework
 
 ### Ana Sayfa
 ![Ana Sayfa](https://github.com/AOghuz/TraversalCoreProje/blob/master/TraversalCoreProje/wwwroot/Traversalgithubimages/site/default1.png)
-![Rotalar](https://github.com/AOghuz/TraversalCoreProje/wwwroot/Traversalgithubimages/site/defaultdestination.png)
-![](https://github.com/AOghuz/TraversalCoreProje/wwwroot/Traversalgithubimages/site/dest2.png)
-![](https://github.com/AOghuz/TraversalCoreProje/wwwroot/Traversalgithubimages/site/turdetails.png)
-![Tur Detayları](https://github.com/AOghuz/TraversalCoreProje/wwwroot/Traversalgithubimages/site/turdetails2.png)
-![Referanslar](https://github.com/AOghuz/TraversalCoreProje/wwwroot/Traversalgithubimages/site/testimonial.png)
+![Rotalar](https://github.com/AOghuz/TraversalCoreProje/blob/master/TraversalCoreProje/wwwroot/Traversalgithubimages/site/defaultdestination.png)
+![Rotalar](https://github.com/AOghuz/TraversalCoreProje/blob/master/TraversalCoreProje/wwwroot/Traversalgithubimages/site/dest2.png)
+![Referanslar](https://github.com/AOghuz/TraversalCoreProje/blob/master/TraversalCoreProje/wwwroot/Traversalgithubimages/site/testimonial.png)
+![Tur Detayları](https://github.com/AOghuz/TraversalCoreProje/blob/master/TraversalCoreProje/wwwroot/Traversalgithubimages/site/turdetails.png)
+![Tur Detayları](https://github.com/AOghuz/TraversalCoreProje/blob/master/TraversalCoreProje/wwwroot/Traversalgithubimages/site/turdetails2.png)
 
 
 
